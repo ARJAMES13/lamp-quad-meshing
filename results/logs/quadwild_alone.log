@@ -1,0 +1,18 @@
+== TEST
+n=142  QQS mean 0.3760 median 0.3062 | QuadWild mean 0.5576 median 0.2182
+Δmean +0.1816 [-0.0260,+0.4497]  W/L 88/46  sign p 3.6e-04
+elements n/n*: median 1.005 [p10 0.976, p90 1.041]  failures 3  time one-run median 12.7s (QQS 4.2s)
+  irregular_frac  QQS 0.0428  QuadWild 0.0160
+  bad_frac        QQS 0.0481  QuadWild 0.0488
+  sj_p05          QQS 0.5437  QuadWild 0.5939
+  hausdorff_rel   QQS 0.0057  QuadWild 0.0082
+  feat_dist_rel   QQS 0.0003  QuadWild 0.0004
+== OOD
+n=40  QQS mean 0.2794 median 0.2198 | QuadWild mean 0.2617 median 0.1760
+Δmean -0.0177 [-0.0946,+0.0714]  W/L 22/16  sign p 4.2e-01
+elements n/n*: median 1.015 [p10 0.985, p90 1.028]  failures 0  time one-run median 8.3s (QQS 2.3s)
+  irregular_frac  QQS 0.0318  QuadWild 0.0128
+  bad_frac        QQS 0.0185  QuadWild 0.0224
+  sj_p05          QQS 0.6682  QuadWild 0.7117
+  hausdorff_rel   QQS 0.0060  QuadWild 0.0077
+  feat_dist_rel   QQS 0.0003  QuadWild 0.0006

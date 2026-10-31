@@ -1,0 +1,24 @@
+train labels: 387
+CV (lam, mean score, mean time): [(0.0, np.float64(0.2603), np.float64(50.6)), (0.002, np.float64(0.265), np.float64(43.0)), (0.005, np.float64(0.2738), np.float64(39.0)), (0.01, np.float64(0.2901), np.float64(36.6)), (0.02, np.float64(0.3241), np.float64(34.4)), (0.05, np.float64(0.3545), np.float64(33.0))] -> lam* 0.002
+TEST (n=141)
+  QQS alone                          mean 0.3773 median 0.3121  d +0.0000 [+0.0000,+0.0000]  W/L 0/0 p 1.0e+00  time 8.4s
+  QW alone                           mean 0.4907 median 0.2179  d +0.1134 [-0.0467,+0.3365]  W/L 88/45 p 2.4e-04  time 59.0s
+  run both, keep best                mean 0.2786 median 0.1943  d -0.0987 [-0.1260,-0.0739]  W/L 88/0 p 6.5e-27  time 67.4s
+  LAMP v2 lam=0.0                    mean 0.2888 median 0.1943  d -0.0886 [-0.1185,-0.0587]  W/L 85/5 p 7.5e-20  time 62.6s
+  LAMP v2 lam=0.002 (CV-chosen)      mean 0.3069 median 0.1976  d -0.0704 [-0.0989,-0.0419]  W/L 74/6 p 5.4e-16  time 53.8s
+    actions: {'QW': 0.22, 'QQS': 0.21, 'both': 0.57}
+    'QW worse than QQS' detection AUC: 0.691  (positives 34/141)
+    component means at lam*=0.002 over 141 parts valid for both (lower is better except sj_p05):
+      QQS alone   irregular_frac 0.04217  bad_frac 0.04770  sj_p05 0.54582  hausdorff_rel 0.00573  feat_dist_rel 0.00031  chamfer_rel 0.00020
+      LAMP v2     irregular_frac 0.02495  bad_frac 0.04154  sj_p05 0.62265  hausdorff_rel 0.00481  feat_dist_rel 0.00036  chamfer_rel 0.00024
+OOD (n=40)
+  QQS alone                          mean 0.2794 median 0.2198  d +0.0000 [+0.0000,+0.0000]  W/L 0/0 p 1.0e+00  time 4.0s
+  QW alone                           mean 0.2617 median 0.1760  d -0.0177 [-0.0946,+0.0714]  W/L 22/16 p 4.2e-01  time 16.6s
+  run both, keep best                mean 0.1983 median 0.1701  d -0.0812 [-0.1277,-0.0445]  W/L 22/0 p 4.8e-07  time 20.6s
+  LAMP v2 lam=0.0                    mean 0.2213 median 0.1701  d -0.0582 [-0.0914,-0.0302]  W/L 20/1 p 2.1e-05  time 19.3s
+  LAMP v2 lam=0.002 (CV-chosen)      mean 0.2213 median 0.1701  d -0.0582 [-0.0914,-0.0302]  W/L 20/1 p 2.1e-05  time 19.3s
+    actions: {'QW': 0.1, 'QQS': 0.12, 'both': 0.78}
+    'QW worse than QQS' detection AUC: 0.753  (positives 7/40)
+    component means at lam*=0.002 over 40 parts valid for both (lower is better except sj_p05):
+      QQS alone   irregular_frac 0.03176  bad_frac 0.01853  sj_p05 0.66821  hausdorff_rel 0.00601  feat_dist_rel 0.00031  chamfer_rel 0.00021
+      LAMP v2     irregular_frac 0.02140  bad_frac 0.01513  sj_p05 0.73727  hausdorff_rel 0.00495  feat_dist_rel 0.00039  chamfer_rel 0.00026
