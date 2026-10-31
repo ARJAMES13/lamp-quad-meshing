@@ -1,0 +1,34 @@
+# LAMP policy: paths are relative to the repository root.
+
+[paths]
+train_qw = "results/labels/qw_train.jsonl"     # QuadWild runs (+ stored patch-layout probe) on train parts
+train_qqs = "results/labels/train_router.jsonl"  # Gmsh QQS runs on the same parts (define the budget n*)
+test_qw = "results/labels/qw_test.jsonl"
+test_qqs = "results/labels/test_v1.jsonl"
+ood_qw = "results/labels/qw_ood.jsonl"
+ood_qqs = "results/labels/ood_v1.jsonl"
+descriptors = "results/features/descriptors_v1.npz"
+split = "configs/splits/v1.json"
+
+[policy]
+lambdas = [0.0, 0.002, 0.005, 0.01, 0.02, 0.05]   # seconds -> score trade-off grid
+cv_folds = 5                                     # family-grouped CV on TRAIN chooses lam
+cv_tolerance = 0.02                              # largest lam within 2 % of the best CV mean
+clip = 2.0
+
+[policy.gbm]                                     # sklearn HistGradientBoostingRegressor, one per action
+max_depth = 3
+max_iter = 250
+learning_rate = 0.05
+min_samples_leaf = 10
+l2_regularization = 1.0
+random_state = 0
+
+[quadwild]
+calibration_tol = 0.03     # |log(n / n*)| tolerance when re-running quantisation to hit the budget
+max_runs = 5
+sharp_angle = 35.0
+
+[inference]
+target_quads = 2500
+expected_time_s = [59.01, 38.21, 67.38]   # per-action mean times on the test set incl. the probe (QW, QQS, both)
